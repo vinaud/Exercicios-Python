@@ -9,7 +9,7 @@ c = int(input("Insira o valor de c: "))
 delta = b ** 2 - 4 * a * c
 if delta == 0:
     resultado = (-b /(2 * a))
-    print("raiz única =", resultado)
+    print("a raiz desta equação é",resultado)
 
 elif delta > 0:
     raizDelta = math.sqrt(delta)
@@ -17,11 +17,15 @@ elif delta > 0:
     resultado1= (-b + raizDelta)/(2 * a)
     resultado2= (-b - raizDelta)/(2 * a)
 
-    print("x1 =", resultado1)
-    print("x2 =", resultado2)
+    if resultado1 <= resultado2:
+        print("as raízes da equação são",resultado1,"e",resultado2)
+    else:
+        print("as raízes da equação são",resultado2,"e",resultado1)
+    
+
 
 else:
-    print("Essa equação não possui raiz no domínio dos Reais")
+    print("esta equação não possui raízes reais")
 
 
 
