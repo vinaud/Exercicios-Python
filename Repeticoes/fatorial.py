@@ -6,7 +6,7 @@ i = 1
 fatorial = 1
 
 if n == 0:
-    fatorial = 0
+    fatorial = 1    
 else:
     while i <= n:
      fatorial = fatorial * i
