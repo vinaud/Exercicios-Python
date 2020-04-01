@@ -1,11 +1,8 @@
-def fizzbuzz(n):
-    if n % 3 == 0:
-        if n % 5 == 0:
-            print("FizzBuzz")
-        else:
-            print("Fizz")
-    else:
-        if  n % 5 == 0:
-            print("Buzz")
-        else:
-            print(n)
+def maximo(n, y, z):
+    if n >= y and n >= z:
+        return n
+    elif y>=n and y>= z:
+        return y
+    elif z>=n and z>= y:
+        return z
+    
