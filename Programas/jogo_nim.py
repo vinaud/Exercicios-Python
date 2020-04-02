@@ -67,6 +67,24 @@ def campeonato():
     #realiza três partidas
     vitoriasJogador = 0
     vitoriasComputador = 0
+    counter = 1
+
+    while counter <= 3:
+        print()
+        print("**** Rodada",counter,"****")
+        print()
+        resultado = partida()
+        if resultado == "jogador":
+            vitoriasJogador = vitoriasJogador + 1
+        else:
+            vitoriasComputador = vitoriasComputador + 1
+        
+        counter = counter + 1
+    print()
+    print("**** Final do campeonato ****")
+    print("Placar: você",vitoriasJogador,"X",vitoriasComputador,"Computador")
+    print()
+    
     
 print("Bem-vindo ao jogo NIM, Escolha: ")
 print()
