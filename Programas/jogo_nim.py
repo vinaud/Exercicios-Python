@@ -1,5 +1,17 @@
 def computador_escolhe_jogada(n, m):
-    return 0
+    
+    pecasRetiradas = m-1
+    while (n - pecasRetiradas) % (m + 1) != 0:
+        pecasRetiradas = pecasRetiradas - 1
+    
+    if pecasRetiradas == 1:
+        print("O computador tirou uma peça.")
+        print()
+    else:
+        print("O computador tirou",pecasRetiradas,"peças.")
+        print()
+
+    return pecasRetiradas
 
 def usuario_escolhe_jogada(n, m):
     pecasRetiradas = m + 1
@@ -11,10 +23,10 @@ def usuario_escolhe_jogada(n, m):
            print()
        else:
            if pecasRetiradas == 1:
-               print("Você retirou uma peça.")
+               print("Você tirou uma peça.")
                print()
            else:
-               print("Você retirou",pecasRetiradas,"peças.")
+               print("Você tirou",pecasRetiradas,"peças.")
                print()
            return pecasRetiradas
     
@@ -23,15 +35,16 @@ def partida():
     #input n e m
     #decidir se jogador ou pc começa
     totalPecas = int(input("Quantas pecas?"))
-    pecasJogada = int(input("Limite de peças por jogada?"))
+    limiteJogada = int(input("Limite de peças por jogada?"))
 
-    if totalPecas % (pecasJogada + 1) == 0:
+    if totalPecas % (limiteJogada + 1) == 0:
         print()
         print("Você começa")
-        usuario_escolhe_jogada(totalPecas, pecasJogada)
+        usuario_escolhe_jogada(totalPecas, limiteJogada)
     else:
         print()
         print("Computador começa")
+        computador_escolhe_jogada(totalPecas,limiteJogada)
 
     return 0
 
