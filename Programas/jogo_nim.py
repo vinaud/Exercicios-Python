@@ -19,7 +19,7 @@ def computador_escolhe_jogada(n, m):
 
 def usuario_escolhe_jogada(n, m):
     pecasRetiradas = m + 1
-    while pecasRetiradas > m:
+    while pecasRetiradas > m :
 
        pecasRetiradas = int(input("Quantas peças você vai retirar?"))
        if pecasRetiradas > m:
@@ -54,7 +54,7 @@ def partida():
         print("Você começa")
 
         while pecas > 0:
-           pecas = pecas - usuario_escolhe_jogada(totalPecas, limiteJogada)
+           pecas = pecas - usuario_escolhe_jogada(pecas, limiteJogada)
            if pecas <= 0:
                print("Fim de jogo! você ganhou")
                return "jogador"
@@ -74,7 +74,7 @@ def partida():
         print("Computador começa")
         
         while pecas > 0:
-               pecas = pecas - computador_escolhe_jogada(totalPecas,limiteJogada)
+               pecas = pecas - computador_escolhe_jogada(pecas,limiteJogada)
                if pecas <= 0:
                    print("Fim de jogo! o computador ganhou")
                    return "computador"
