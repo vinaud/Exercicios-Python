@@ -1,3 +1,14 @@
+"""
+Jogo NIM
+Nesse jogo, n peças são inicialmente dispostas numa mesa ou tabuleiro.
+ Um jogador e a maquina  jogam alternadamente, retirando pelo menos 1 e no máximo m peças cada um. 
+ Quem tirar as últimas peças possíveis ganha o jogo.
+
+Existe uma estratégia para ganhar o jogo que é muito simples:
+ ela consiste em deixar sempre múltiplos de (m+1) peças ao jogador oponente. Essa é a estratégia usada pela máquina,
+ sempre que possível ser usada
+"""
+
 def computador_escolhe_jogada(n, m):
     if n < m:
         print("O computador tirou",n,"peças.")
