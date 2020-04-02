@@ -49,12 +49,14 @@ def partida():
                return "jogador"
            else:
                print("Agora restam",pecas,"peças no tabuleiro")
+               print()
                pecas = pecas - computador_escolhe_jogada(pecas, limiteJogada)
                if pecas <= 0:
                    print("Fim de jogo! o computador ganhou")
                    return "computador"
                else:
                    print("Agora restam",pecas,"peças no tabuleiro")
+                   print()
             
     else:
         print()
@@ -86,16 +88,18 @@ def campeonato():
     print()
     
     
-print("Bem-vindo ao jogo NIM, Escolha: ")
-print()
-print("1 - para jogar uma partida isolada")
-print("2 - para jogar um campeonato 2")
+opcao = 0
+while opcao !=1 and opcao !=2:
+    print("Bem-vindo ao jogo NIM, Escolha: ")
+    print()
+    print("1 - para jogar uma partida isolada")
+    print("2 - para jogar um campeonato 2")
 
-opcao = int(input())
+    opcao = int(input())
 
-if opcao == 1:
-    partida()
-elif opcao == 2:
-    campeonato()
-else:
-    print("Opção inválida!")
+    if opcao == 1:
+        partida()
+    elif opcao == 2:
+        campeonato()
+    else:
+        print("Opção inválida!")
