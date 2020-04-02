@@ -1,17 +1,21 @@
 def computador_escolhe_jogada(n, m):
-    
-    pecasRetiradas = m-1
-    while (n - pecasRetiradas) % (m + 1) != 0 and pecasRetiradas -1 > 0:
-        pecasRetiradas = pecasRetiradas - 1
-    
-    if pecasRetiradas == 1:
-        print("O computador tirou uma peça.")
+    if n < m:
+        print("O computador tirou",n,"peças.")
         print()
-    else:
-        print("O computador tirou",pecasRetiradas,"peças.")
-        print()
+        return n
 
-    return pecasRetiradas
+    else:
+        pecasRetiradas = n%(m+1)
+
+        if pecasRetiradas > 0:
+            print("O computador tirou",pecasRetiradas,"peças.")
+            print()
+            return pecasRetiradas
+
+        else:
+            print("O computador tirou",pecasRetiradas,"peças.")
+            print()
+            return m
 
 def usuario_escolhe_jogada(n, m):
     pecasRetiradas = m + 1
@@ -34,10 +38,17 @@ def usuario_escolhe_jogada(n, m):
 def partida():
     #input n e m
     #decidir se jogador ou pc começa
-    totalPecas = int(input("Quantas pecas?"))
-    limiteJogada = int(input("Limite de peças por jogada?"))
-    pecas = totalPecas
+    totalPecas = 0
+    limiteJogada = 3
 
+    while limiteJogada > totalPecas:
+
+        totalPecas = int(input("Quantas pecas?"))
+        limiteJogada = int(input("Limite de peças por jogada?"))
+        if(limiteJogada> totalPecas):
+            print("Valor inválidos")
+
+    pecas = totalPecas
     if totalPecas % (limiteJogada + 1) == 0:
         print()
         print("Você começa")
@@ -61,9 +72,23 @@ def partida():
     else:
         print()
         print("Computador começa")
-        computador_escolhe_jogada(totalPecas,limiteJogada)
-
-    return ""
+        
+        while pecas > 0:
+               pecas = pecas - computador_escolhe_jogada(totalPecas,limiteJogada)
+               if pecas <= 0:
+                   print("Fim de jogo! o computador ganhou")
+                   return "computador"
+               else:
+                   print("Agora restam",pecas,"peças no tabuleiro")
+                   print()
+                   pecas = pecas - usuario_escolhe_jogada(pecas, limiteJogada)
+                   if pecas <= 0:
+                       print("Fim de jogo! você ganhou")
+                       return "jogador"
+                   else:
+                       print("Agora restam",pecas,"peças no tabuleiro")
+                       print()
+    
 
 def campeonato():
     #realiza três partidas
@@ -87,19 +112,22 @@ def campeonato():
     print("Placar: você",vitoriasJogador,"X",vitoriasComputador,"Computador")
     print()
     
-    
-opcao = 0
-while opcao !=1 and opcao !=2:
-    print("Bem-vindo ao jogo NIM, Escolha: ")
-    print()
-    print("1 - para jogar uma partida isolada")
-    print("2 - para jogar um campeonato 2")
+def main():
+    opcao = 0
+    while opcao !=1 and opcao !=2:
+        print("Bem-vindo ao jogo NIM, Escolha: ")
+        print()
+        print("1 - para jogar uma partida isolada")
+        print("2 - para jogar um campeonato 2")
 
-    opcao = int(input())
+        opcao = int(input())
 
-    if opcao == 1:
-        partida()
-    elif opcao == 2:
-        campeonato()
-    else:
-        print("Opção inválida!")
+        if opcao == 1:
+            partida()
+        elif opcao == 2:
+            campeonato()
+        else:
+            print("Opção inválida!")
+ 
+
+main()
