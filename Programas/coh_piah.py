@@ -203,7 +203,9 @@ def calcula_pal(texto):
     return pal
 
 def calcula_assinatura(texto):
-    '''IMPLEMENTAR. Essa funcao recebe um texto e devolve a assinatura do texto.'''
+    '''Essa funcao recebe um texto e devolve a assinatura do texto.
+       cada item da assinatura é calculado em um método próprio
+    '''
     wal = calcula_wal(texto)
     ttr = calcula_ttr(texto)
     hlr = calcula_hlr(texto)
@@ -217,9 +219,21 @@ def calcula_assinatura(texto):
 
 def compara_assinatura(as_a, as_b):
     '''IMPLEMENTAR. Essa funcao recebe duas assinaturas de texto e deve devolver
-     o grau de similaridade nas assinaturas.'''
-    pass
+     o grau de similaridade nas assinaturas. A função de comparação é:
+     S(ab) = (Somatório(i=1 -> 6) |F i,a - F i,b|) / 6, onde:
+     S(ab) - grau de similardade entre duas assinatura;
+     F i,a é o valor de cada traço linguístico i no texto a; e
+     F i,b é o valor de cada traço linguístico i no texto b.
+     '''
+     
+    somatorio = 0
+    grau_similaridade = 0
 
+    for i in range(6):
+         somatorio = somatorio + as_a[i] - as_b[i]
+    grau_similaridade = somatorio / 6
+
+    return grau_similaridade
 
 def avalia_textos(textos, ass_cp):
     '''IMPLEMENTAR. Essa funcao recebe uma lista de textos
@@ -246,5 +260,10 @@ def test_run_assinatura():
     
     return 0
 
-test_run_assinatura()
+def test_run_compara_assinatura():
+    valor = compara_assinatura([5.571428571428571, 0.8253968253968254, 0.6984126984126984, 210.0, 5.5, 45.888888888888886],[5.571428571428571, 0.8253968253968254, 0.6984126984126984, 210.0, 4.5, 45.888888888888886])
+    print("valor da comparação:", valor)
+
+#test_run_assinatura()
+test_run_compara_assinatura()
 
