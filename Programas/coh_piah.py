@@ -82,11 +82,17 @@ def calcula_wal(texto):
     #calcula media de caracteres das palavras de um texto
     soma = 0
     media = 0
+    frases = []
+    palavras = []
 
     sentencas = separa_sentencas(texto)
-    frases = separa_frases(sentencas)
-    palavras = separa_palavras(frases)
 
+    for sentenca in sentencas:
+        frases = frases + separa_frases(sentenca)
+    
+    for frase in frases:
+        palavras = palavras + separa_palavras(frase)
+    
     for palavra in palavras:
         soma = soma + len(palavra)
     
@@ -96,7 +102,7 @@ def calcula_wal(texto):
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
-    wal = calcula_wal
+    wal = calcula_wal(texto)
     ttr = 1
     hlr = 1
     sal = 1
@@ -128,9 +134,13 @@ def main():
     #recebe os textos a sserem analisados e os armazena em uma lista
     textos = le_textos()
     print(textos)
+     
 
-
+def test():
+    texto = input("insira um texto")
+    media = calcula_wal(texto)
+    print ("Media das palavras:",media)
     return 0
 
-main()
+test()
 
