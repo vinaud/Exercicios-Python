@@ -147,13 +147,29 @@ def calcula_hlr(texto):
 
     hlr = palavras_unicas / len(palavras)
     return hlr
+def calcula_sal(texto):
+    """
+    Calcula o tamanho médio de sentença que é a soma dos números de caracteres em 
+    todas as sentenças dividida pelo número de sentenças 
+    (os caracteres que separam uma sentença da outra não devem ser contabilizados como parte da sentença).
+    """
+    sal = 0
+    soma_caracteres = 0
+    sentencas = separa_sentencas(texto)
+
+    for sentenca in sentencas:
+        soma_caracteres = soma_caracteres + len(sentenca)
+    
+    sal = soma_caracteres / len(sentencas)
+
+    return sal
 
 def calcula_assinatura(texto):
-    '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
+    '''IMPLEMENTAR. Essa funcao recebe um texto e devolve a assinatura do texto.'''
     wal = calcula_wal(texto)
     ttr = calcula_ttr(texto)
     hlr = calcula_hlr(texto)
-    sal = 1
+    sal = calcula_sal(texto)
     sac = 1
     pal = 1
 
@@ -192,7 +208,7 @@ def test_run_assinatura():
 
     print("Valor de ttr:", calcula_ttr(texto))
     print("Valor de hlr:", calcula_hlr(texto))
-
+    print("Valor de sal:", calcula_sal(texto))
     return 0
 
 test_run_assinatura()
