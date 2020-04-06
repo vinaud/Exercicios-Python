@@ -100,10 +100,34 @@ def calcula_wal(texto):
 
     return media
 
+def calcula_ttr(texto):
+    """
+    calcula a Relação Type-Token: Número de palavras diferentes utilizadas
+     em um texto divididas pelo total de palavras.
+
+    """
+    frases = []
+    palavras = []
+    palavras_diferentes = 0
+    ttr = 0
+
+    sentencas = separa_sentencas(texto)
+
+    for sentenca in sentencas:
+        frases = frases + separa_frases(sentenca)
+    
+    for frase in frases:
+        palavras = palavras + separa_palavras(frase)
+    
+    palavras_diferentes = n_palavras_diferentes(palavras)
+
+    ttr = palavras_diferentes / len(palavras)
+    return ttr
+
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
     wal = calcula_wal(texto)
-    ttr = 1
+    ttr = calcula_ttr(texto)
     hlr = 1
     sal = 1
     sac = 1
@@ -136,11 +160,14 @@ def main():
     print(textos)
      
 
-def test():
+def test_run_assinatura():
     texto = input("insira um texto")
+
     media = calcula_wal(texto)
     print ("Media das palavras:",media)
+    print("Valor de ttr:", calcula_ttr(texto))
+
     return 0
 
-test()
+test_run_assinatura()
 
