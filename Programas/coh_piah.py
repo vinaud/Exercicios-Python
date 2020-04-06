@@ -251,13 +251,17 @@ def main():
     #recebe a assinatura ja conhecida de uma pessoa específica
     #para servir de base de comparação
     assinatura_portador = le_assinatura()
-    print(assinatura_portador)
+    print("Assinatura inserida:",assinatura_portador)
 
     #recebe os textos a sserem analisados e os armazena em uma lista
     textos = le_textos()
-    print(textos)
-     
+    print("Textos inseridos:",textos)
 
+    #compara a assinatura dos textos inseridos e compara com a assinatura base
+    indice = avalia_textos(textos,assinatura_portador)
+    print("O autor do texto",indice,"está infectado com COH-PIAH")
+     
+#metodos para testar algumas funções
 def test_run_assinatura():
     texto = input("insira um texto")
     assinatura = calcula_assinatura(texto)
@@ -279,5 +283,6 @@ def test_run_avalia():
 
 #test_run_assinatura()
 #test_run_compara_assinatura()
-test_run_avalia()
+#test_run_avalia()
 
+main()
