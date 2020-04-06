@@ -126,7 +126,7 @@ def calcula_ttr(texto):
 
 def calcula_hlr(texto):
     """
-    Calcula a Razão Hapax Legomana que é o número de palavras
+    Calcula a Razão Hapax Legomana, que é o número de palavras
      que aparecem uma única vez dividido pelo total de palavras.
     """
     
@@ -147,9 +147,10 @@ def calcula_hlr(texto):
 
     hlr = palavras_unicas / len(palavras)
     return hlr
+
 def calcula_sal(texto):
     """
-    Calcula o tamanho médio de sentença que é a soma dos números de caracteres em 
+    Calcula o tamanho médio de sentença, que é a soma dos números de caracteres em 
     todas as sentenças dividida pelo número de sentenças 
     (os caracteres que separam uma sentença da outra não devem ser contabilizados como parte da sentença).
     """
@@ -164,13 +165,29 @@ def calcula_sal(texto):
 
     return sal
 
+def calcula_sac(texto):
+    """
+    Calcula a complexidade de sentença, que é o número total de frases divido pelo número de sentenças.
+    """
+    sac = 0
+    frases = []
+    sentencas = separa_sentencas(texto)
+
+    for sentenca in sentencas:
+        frases = frases + separa_frases(sentenca)
+
+    sac = len(frases) / len(sentencas)
+
+    return sac
+
+
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e devolve a assinatura do texto.'''
     wal = calcula_wal(texto)
     ttr = calcula_ttr(texto)
     hlr = calcula_hlr(texto)
     sal = calcula_sal(texto)
-    sac = 1
+    sac = calcula_sac(texto)
     pal = 1
 
     assinatura = [wal, ttr, hlr, sal, sac, pal]
@@ -202,13 +219,10 @@ def main():
 
 def test_run_assinatura():
     texto = input("insira um texto")
+    assinatura = calcula_assinatura(texto)
 
-    media = calcula_wal(texto)
-    print ("Media das palavras:",media)
-
-    print("Valor de ttr:", calcula_ttr(texto))
-    print("Valor de hlr:", calcula_hlr(texto))
-    print("Valor de sal:", calcula_sal(texto))
+    print(assinatura)
+    
     return 0
 
 test_run_assinatura()
