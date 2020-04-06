@@ -124,11 +124,35 @@ def calcula_ttr(texto):
     ttr = palavras_diferentes / len(palavras)
     return ttr
 
+def calcula_hlr(texto):
+    """
+    Calcula a Razão Hapax Legomana que é o número de palavras
+     que aparecem uma única vez dividido pelo total de palavras.
+    """
+    
+    frases = []
+    palavras = []
+    palavras_unicas = 0
+    hlr = 0
+
+    sentencas = separa_sentencas(texto)
+
+    for sentenca in sentencas:
+        frases = frases + separa_frases(sentenca)
+    
+    for frase in frases:
+        palavras = palavras + separa_palavras(frase)
+    
+    palavras_unicas = n_palavras_unicas(palavras)
+
+    hlr = palavras_unicas / len(palavras)
+    return hlr
+
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e deve devolver a assinatura do texto.'''
     wal = calcula_wal(texto)
     ttr = calcula_ttr(texto)
-    hlr = 1
+    hlr = calcula_hlr(texto)
     sal = 1
     sac = 1
     pal = 1
@@ -165,7 +189,9 @@ def test_run_assinatura():
 
     media = calcula_wal(texto)
     print ("Media das palavras:",media)
+
     print("Valor de ttr:", calcula_ttr(texto))
+    print("Valor de hlr:", calcula_hlr(texto))
 
     return 0
 
