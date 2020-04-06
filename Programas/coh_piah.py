@@ -180,6 +180,27 @@ def calcula_sac(texto):
 
     return sac
 
+def calcula_pal(texto):
+    """
+    Calcula o Tamanho médio de frase, que é a soma do número de caracteres em
+    cada frase dividida pelo número de frases no texto(os caracteres que separam
+     uma frase da outra não devem ser contabilizados como parte da frase).
+    """
+    pal = 0
+    soma_caracteres = 0
+
+    frases = []
+    sentencas = separa_sentencas(texto)
+
+    for sentenca in sentencas:
+        frases = frases + separa_frases(sentenca)
+    
+    for frase in frases:
+        soma_caracteres = soma_caracteres + len(frase)
+
+    pal = soma_caracteres / len(frases)
+
+    return pal
 
 def calcula_assinatura(texto):
     '''IMPLEMENTAR. Essa funcao recebe um texto e devolve a assinatura do texto.'''
@@ -188,7 +209,7 @@ def calcula_assinatura(texto):
     hlr = calcula_hlr(texto)
     sal = calcula_sal(texto)
     sac = calcula_sac(texto)
-    pal = 1
+    pal = calcula_pal(texto)
 
     assinatura = [wal, ttr, hlr, sal, sac, pal]
 
