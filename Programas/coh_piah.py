@@ -230,7 +230,7 @@ def compara_assinatura(as_a, as_b):
     grau_similaridade = 0
 
     for i in range(6):
-         somatorio = somatorio + as_a[i] - as_b[i]
+         somatorio = somatorio + abs(as_a[i] - as_b[i])
     grau_similaridade = somatorio / 6
 
     return grau_similaridade
@@ -261,7 +261,7 @@ def test_run_assinatura():
     return 0
 
 def test_run_compara_assinatura():
-    valor = compara_assinatura([5.571428571428571, 0.8253968253968254, 0.6984126984126984, 210.0, 5.5, 45.888888888888886],[5.571428571428571, 0.8253968253968254, 0.6984126984126984, 210.0, 4.5, 45.888888888888886])
+    valor = compara_assinatura([4.34, 0.05, 0.02, 12.81, 2.16, 0.0],[3.96, 0.05, 0.02, 22.22, 3.41, 0.0])
     print("valor da comparação:", valor)
 
 #test_run_assinatura()
